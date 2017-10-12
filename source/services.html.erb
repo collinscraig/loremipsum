@@ -1,0 +1,5 @@
+<% dato.services.sort_by(&:position).each do |service| %>
+<div>
+  <%= partial "partials/service", locals: { service: service } %>
+</div>
+<% end %>

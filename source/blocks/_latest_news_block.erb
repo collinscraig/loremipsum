@@ -1,0 +1,7 @@
+<h1><%= block.title %></h1>
+<%= block.introduction %>
+<% block.featured_articles.each do |article| %>
+    <img src="<%= article.image.url() %>" alt="<%= article.image.alt %>" title="<%= article.image.title %>" />
+    <h2><%= article.title %></h2>
+    <%= article.description %>
+<% end %>
