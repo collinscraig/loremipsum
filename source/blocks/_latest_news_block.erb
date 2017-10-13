@@ -1,7 +1,48 @@
-<h1><%= block.title %></h1>
-<%= block.introduction %>
-<% block.featured_articles.each do |article| %>
-    <img src="<%= article.image.url() %>" alt="<%= article.image.alt %>" title="<%= article.image.title %>" />
-    <h2><%= article.title %></h2>
-    <%= article.description %>
-<% end %>
+<div class="block rowblock has-white-background-colour span-12">
+
+            <!-- row block -->
+            <div class="constrained content">
+                <div class="cf row equal-heights">
+                    <div class="block articlelistingblock span-12">
+                        
+                        <h1><%= block.title %></h1>
+                        
+                        <%= block.introduction %>
+
+                        <!-- article listing block -->
+                        <div class="article-listing">
+
+                            <div class="article-listing__results-container">
+
+                                <ul class="article-listing__results">
+                                    
+                                    <% block.featured_articles.each do |article| %>
+                                        <li class="article-listing__result">
+
+                                            <!-- result image -->
+                                            <div class="article-listing__result-image">
+                                                <a href="/" title="" class="image-link image-hover">
+                                                    <img src="<%= article.image.url() %>" alt="<%= article.image.alt %>" title="<%= article.image.title %>">
+                                                </a>
+                                            </div>
+
+                                            <!-- all result -->
+                                            <div class="article-listing__result-content">
+                                                <h4 class="article-listing__result-title"><%= article.title %></h4>
+                                                <%= article.description %>
+                                            </div>
+
+
+                                        </li>
+                                    <% end %>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
