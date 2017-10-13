@@ -23,7 +23,7 @@ page '/*.txt', layout: false
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
 
-ignore "services/service.html"
+ignore "service.html"
 dato.services.each do |service| 
   proxy "services/#{service.slug}.html", "/service.html", locals: { service: service }
 end
