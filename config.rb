@@ -23,6 +23,21 @@ page '/*.txt', layout: false
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
 
+ignore "services/service.html"
+dato.services.each do |service| 
+  proxy "services/#{service.slug}.html", "/service.html", locals: { service: service }
+end
+
+ignore "child_page.html"
+dato.child_pages.each do |child_page| 
+  proxy "#{child_page.parent_page.slug}/#{child_page.slug}.html", "/child_page.html", locals: { child_page: child_page }
+end
+
+ignore "parent_page.html"
+dato.parent_pages.each do |parent_page| 
+  proxy "/#{parent_page.slug}.html", "/parent_page.html", locals: { parent_page: parent_page }
+end
+
 # Proxy pages
 # https://middlemanapp.com/advanced/dynamic-pages/
 

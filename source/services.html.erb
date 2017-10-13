@@ -1,5 +1,6 @@
 <% dato.services.sort_by(&:position).each do |service| %>
 <div>
-  <%= partial "partials/service", locals: { service: service } %>
+    <h3><%= link_to service.name, "/services/#{service.slug}.html" %></h3>
+    <%= service.description %>
 </div>
 <% end %>

@@ -1,7 +1,36 @@
-<h1><%= block.title %></h1>
+<div class="block rowblock has-white-background-colour span-12">
 
-<% block.featured_services.each do |service| %>
-    <img src="<%= service.image.url() %>" alt="<%= service.image.alt %>" title="<%= service.image.title %>" />
-    <h2><%= service.name %></h2>
-    <%= service.description %>
-<% end %>
+    <!-- row block -->
+    <div class="constrained content">
+        <div class="cf row equal-heights">
+
+            <div class="block childpodlistingblock span-12">
+                
+                <h1><%= block.title %></h1>
+
+                <div class="child-pod-listing">
+                    <div class="row equal-row">
+
+
+                        <% block.featured_services.each do |service| %>
+
+                            <div class="child-pod-listing__pod">
+                                <div class="child-pod-listing__image">
+                                    <a title="Governance" href="" class="image-link image-hover">
+                                        <img src="<%= service.image.url() %>" alt="<%= service.image.alt %>" title="<%= service.image.title %>" />
+                                    </a>
+                                </div>
+                                <div class="child-pod-listing__content">
+                                    <h3 class="child-pod-listing__pod-title"><%= link_to service.name, "/services/#{service.slug}.html" %></h3>
+                                    <p><%= service.description %></p>
+                                </div>
+                            </div>
+                        
+                        <% end %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

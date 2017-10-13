@@ -11,6 +11,28 @@
     <%= javascript_include_tag "site" %>
   </head>
   <body>
-    <%= yield %>
+      
+    <!-- navigation -->
+    <ul class="">
+      <li><%= link_to "Home", "/index.html"%></li>
+      <% dato.parent_pages.each do |parent_page|  %>
+        <li><%= link_to parent_page.title, "/#{parent_page.slug}.html" %>
+            <ul>
+                <% dato.child_pages.each do |child_page|  %>
+                    <% if child_page.parent_page.slug == parent_page.slug %>
+                        <li><%= link_to child_page.title, "/#{child_page.parent_page.slug}/#{child_page.slug}.html" %></li>
+                    <% end %>
+                <% end %>
+            </ul>
+        </li>
+      <% end %>
+      <li><%= link_to "Services", "/services.html"%></li>
+    </ul>
+      
+        <main>
+            <div class="page cf">
+                <%= yield %>
+            </div>
+        </main>
   </body>
 </html>

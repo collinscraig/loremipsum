@@ -1,0 +1,22 @@
+<h1><%= parent_page.title %></h1>
+
+<% parent_page.blocks.each do |block| %>
+
+    <!-- hero image block -->
+    <% if block.item_type.api_key == "hero_image_block" %>
+
+    <%= partial "blocks/hero_image_block", locals: { block: block } %>
+    
+    <!-- our services block -->
+    <% elsif block.item_type.api_key == "services_block" %>
+
+    <%= partial "blocks/services_block", locals: { block: block } %>
+
+    <!-- latest news block -->
+    <% elsif block.item_type.api_key == "latest_news_block" %>
+
+    <%= partial "blocks/latest_news_block", locals: { block: block } %>
+
+    <% end %>
+
+<% end %>
