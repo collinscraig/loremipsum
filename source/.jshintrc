@@ -1,0 +1,30 @@
+{
+    "asi": true,
+    "bitwise": true,
+    "browser": true,
+    "camelcase": true,
+    "curly": true,
+    "devel": true,
+    "eqeqeq": true,
+    "esnext": true,
+    "expr": true,
+    "globals": {
+        "define": true,
+        "$": true,
+        "Modernizr": true,
+        "require": true
+    },
+    "immed": true,
+    "indent": 4,
+    "latedef": true,
+    "maxerr": 999,
+    "newcap": true,
+    "noarg": true,
+    "node": true,
+    "regexp": true,
+    "smarttabs": true,
+    "strict": true,
+    "trailing": true,
+    "undef": true,
+    "unused": true
+}

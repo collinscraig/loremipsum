@@ -1,0 +1,264 @@
+// Styles for: form
+// Authors: Craig Collins
+// Created date: 11/07/2016
+// Notes: form style for all devices
+
+// styling for standard fieldset
+fieldset {
+    @include u(margin, 0);
+    @include u(padding, 0);
+    border: none;
+}
+
+.fieldset {
+    @include u(padding, 0, 4, 4, 4);
+    @include u(border-radius, 0);
+    @include u(margin, 0, 0, 4, 0);
+    border: 1px solid $grey;
+    position: relative;
+}
+
+// legend
+legend {
+    @include u(font-size, 1.8);
+    @include u(margin, 0, 0, 1.2, 0);
+    line-height: 1;
+    display: block;
+    font-weight: normal;
+}
+
+.legend {
+    @include u(font-size, 2.8);
+    @include u(margin, 0, 0, 3, 0);
+    line-height: 1;
+    display: block;
+    font-family: $bodyFont;
+    font-weight: normal;
+}
+
+// label
+label,
+.label {
+    @include u(font-size, 1.8);
+    @include u(margin, 0, 0, 1.2, 0);
+    line-height: 1;
+    display: block;
+    font-weight: bold;
+}
+
+.label-helper {
+    @include u(font-size, 1.5);
+    @include u(margin, -1, 0, 1.2, 0);
+    color: $grey;
+    line-height: 1.4;
+}
+
+// inputs/textareas/radio/checkboxes
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+input[type="search"],
+textarea,
+select {
+    @include u(margin, 0, 0, 2, 0);
+    @include u(padding, 0, 2);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    background-color: #faf9f8;
+    border: 2px solid o($grey, 10%);
+    display: block;
+    font-family: inherit;
+    font-size: 18px;
+    width: 100%;
+    height: 50px;
+    color: $bodyFont;
+    box-sizing: border-box;
+    box-shadow: inset 0px 1px 5px 0 rgba(0, 0, 0, 0.1);
+    max-width: 615px;
+
+    &::-webkit-input-placeholder {
+        color: $grey;
+        font-size: inherit;
+    }
+
+    &:-moz-placeholder {
+        color: $grey;
+        font-size: inherit;
+    }
+
+    &::-moz-placeholder {
+        color: $grey;
+        font-size: inherit;
+    }
+
+    &::-ms-input-placeholder {
+        color: $grey;
+        font-size: inherit;
+    }
+
+    &:focus {
+        border: 2px solid $primary;
+        outline: none;
+    }
+
+    &:disabled {
+        background-color: #f1f1f1;
+        cursor: not-allowed;
+        color: $grey;
+    }
+}
+
+textarea {
+    @include u(padding, 1.7, 3);
+    @include u(min-height, 10);
+    @include u(border-radius, 1.5);
+}
+
+select {
+    @include u(padding, 0, 5, 0, 2);
+    background-image: url(/Static/src/icons/chevron-down.svg);
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    line-height: 2.6;
+    // hide dropdown arrow in internet explorer
+    &::-ms-expand {
+        display: none;
+    }
+
+    &.title-select {
+        @include u(max-width, 32.5);
+    }
+}
+
+select[multiple] {
+    @include u(padding, 1.5, 3);
+    border-radius: 20px;
+    background: #faf9f8;
+    height: inherit;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+    @include u(font-size, 1.6);
+
+    + label {
+        @include u(margin, 0, 2, 0, 0);
+        @include u(font-size, 1.6);
+        font-weight: normal;
+        display: inline-block;
+        vertical-align: baseline;
+    }
+}
+
+input[type='file'] {
+    @include u(font-size, 1.6);
+}
+
+// submits
+input[type="submit"],
+input[type="reset"],
+button {
+    @include u(padding, 1.4, 2, 1.5, 2);
+    @include u(font-size, 1.8);
+    display: inline-block;
+    margin-bottom: 0;
+    line-height: normal;
+    text-align: center;
+    white-space: normal;
+    vertical-align: middle;
+    font-family: $bodyFont;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: none;
+    border-radius: 1000px;
+    color: $white;
+    background-color: $primary;
+    text-transform: none;
+    transition: background .25s ease-in-out;
+    box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.2);
+
+    &:active,
+    &.active,
+    &.open,
+    &:hover {
+        border: none;
+        color: $white;
+        background-color: darken($primary, 5);
+
+        span {
+            display: block;
+            transform: scale(1.1);
+        }
+    }
+
+    &.has-no-label {
+        @include u(margin-top, 3);
+    }
+}
+
+// required
+.required {
+    color: $primary;
+}
+
+// input container
+.input-container {
+    @include u(margin-right, 7);
+    position: relative;
+
+    &.is-error {
+        input,
+        textarea {
+            border: 2px solid o($primary, 50);
+        }
+    }
+
+    &.is-valid {
+        input,
+        textarea {
+            border: 2px solid o($primary, 50);
+        }
+    }
+}
+
+// input group
+.input-group {
+    display: table;
+    width: 100%;
+
+    input {
+        white-space: nowrap;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .input-group-button {
+        @include u(padding-top, 0);
+        @include u(padding-bottom, 0);
+        @include u(margin, 0);
+        display: table-cell;
+        text-align: center;
+        vertical-align: top;
+        width: 1%;
+
+        button {
+            @include u(margin-left, 2);
+            white-space: nowrap;
+        }
+    }
+}

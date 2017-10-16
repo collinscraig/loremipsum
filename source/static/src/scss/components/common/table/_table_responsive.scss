@@ -1,0 +1,60 @@
+// Styles for: Table
+// Authors: Craig Collins
+// Created date: 11/07/2016
+// Notes: Table style changes for modern browsers and devices
+
+// TABLE - 1024px
+@media only screen and (max-width: 58.750em) {
+    table tr {
+        th,
+        td {
+            vertical-align: top;
+        }
+    }
+}
+
+// TABLE - 640px
+@media only screen and (max-width: 40em) {
+    table {
+        border: 1px solid $primary;
+
+        thead,
+        tfoot {
+            display: none;
+        }
+
+        tbody tr td,
+        tr td {
+            display: block;
+            position: relative;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            text-align: left;
+            border: none;
+
+            &:before {
+                @include u(font-size, 1.4);
+                content: attr(data-th) '';
+                display: block;
+                width: 100%;
+                max-height: 100%;
+                font-family: $bodyFont;
+                color: #5e5e5e;
+            }
+        }
+    }
+
+    table tr td:last-child {
+        padding-bottom: 26px;
+        border-bottom: 1px solid $primary;
+    }
+    
+    table tr:last-child td:last-child {
+        border-bottom: none;
+    }
+
+    table tr td:first-child {
+        padding-top: 26px;
+    }
+
+}

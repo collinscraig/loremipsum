@@ -1,0 +1,43 @@
+//* @define component-name-here; weak
+
+// variables
+@import 'variables';
+
+// vendors
+@import 'vendor/normalize';
+
+// UTILITIES
+// functions
+@import 'utilities/functions/strip_unit';
+@import 'utilities/functions/px_to_em';
+@import 'utilities/functions/opacity_sim';
+@import 'utilities/functions/map_read';
+
+// mixins
+@import 'utilities/mixins/clearfix';
+@import 'utilities/mixins/breakpoints';
+@import 'utilities/mixins/unit_constructor';
+@import 'utilities/mixins/width_constructor';
+@import 'utilities/mixins/table_constructor';
+@import 'utilities/mixins/pod_constructor';
+
+// base
+@import 'base/icons';
+@import 'base/fonts';
+@import 'base/style';
+@import 'base/structure/structure';
+
+// COMPONENTS
+// common
+@import 'components/common/button';
+@import 'components/common/table/table';
+@import 'components/common/form/form';
+
+// blocks
+
+// LAYOUT
+// sections
+@import 'layouts/sections/body/body';
+@import 'layouts/sections/footer/footer';
+@import 'layouts/sections/header/header';
+@import 'layouts/sections/navigation/navigation';

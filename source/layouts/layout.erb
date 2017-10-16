@@ -7,10 +7,53 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Use the title from a page's frontmatter if it has one -->
     <title><%= current_page.data.title || "Middleman" %></title>
-    <%= stylesheet_link_tag "site" %>
-    <%= javascript_include_tag "site" %>
+    <%= stylesheet_link_tag "main" %>
+    <%= javascript_include_tag "main" %>
     </head>
     <body>
+        
+        <!-- header -->
+        <header class="c-header">
+            
+            <div class="c-header__inner">
+                
+                <a class="c-header__logo" href="">
+                    <img href="">
+                </a>
+            
+                <nav class="c-navigation">
+                    <ul class="c-navigation__list">
+                        <li class="c-navigation__item">
+                            <span class="c-navigation__item-inner">
+                                <a class="c-navigation__link" href="/">Home</a>
+                            </span>
+                        </li>
+                        <li class="c-navigation__item">
+                            <span class="c-navigation__item-inner--dropdown">
+                                <a class="c-navigation__link" href="/">About Us</a>
+                            </span>
+                        </li>
+                        <li class="c-navigation__item">
+                            <span class="c-navigation__item-inner--dropdown">
+                                <a class="c-navigation__link c-navigation__link--dropdown" href="/">Investment Trust</a>
+                            </span>
+                        </li>
+                        <li class="c-navigation__item">
+                            <span class="c-navigation__item-inner--dropdown">
+                                <a class="c-navigation__link c-navigation__link--dropdown" href="/">Services</a>
+                            </span>
+                        </li>
+                        <li class="c-navigation__item">
+                            <span class="c-navigation__item-inner">
+                                <a class="c-navigation__link" href="/">News</a>
+                            </span>
+                        </li>
+                    </ul>
+                </nav>
+                
+            </div>
+            
+        </header>
       
         <!-- navigation -->
         <ul class="">

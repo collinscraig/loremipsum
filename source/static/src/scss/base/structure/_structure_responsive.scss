@@ -1,0 +1,73 @@
+// Styles for: Structure
+// Authors: Craig Collins
+// Created date: 11/07/2016
+// Notes: Stucture changes for modern browsers and devices
+
+// STRUCTURE CHANGE - 1200px
+@media only screen and (max-width: 75.000em) { 
+    .constrained.content {
+        @include u(padding, 5, 3, 3, 3);
+    }
+}
+
+// STRUCTURE CHANGE - 940px
+@media only screen and (max-width: 58.750em) { 
+    .main,
+    .sidebar {
+        width: 100%;
+    }
+    
+    @for $i from 1 through $maxColCount {
+        .m-col-#{$i} {
+            width: percentage($i/$maxColCount);
+        }
+    }
+    @for $i from 1 through $maxColCount {
+        %m-col-#{$i} {
+            width: percentage($i/$maxColCount);
+        }
+    }
+    @for $i from 1 through $maxColCount {
+        .m-col-push-#{$i} {
+            left: percentage($i/$maxColCount);
+        }
+    }
+    @for $i from 1 through $maxColCount {
+        .m-col-pull-#{$i} {
+            padding-right: percentage($i/$maxColCount);
+        }
+    } 
+}
+
+// STRUCTURE CHANGE - 480px
+@media only screen and (max-width: 30em) { 
+    .main,
+    .sidebar {
+        width: 100%;
+    }
+    
+    .constrained.content {
+        @include u(padding, 4, 2, 2, 2);
+    }
+    
+    @for $i from 1 through $maxColCount {
+        .s-col-#{$i} {
+            width: percentage($i/$maxColCount);
+        }
+    }
+    @for $i from 1 through $maxColCount {
+        %s-col-#{$i} {
+            width: percentage($i/$maxColCount);
+        }
+    }
+    @for $i from 1 through $maxColCount {
+        .s-col-push-#{$i} {
+            left: percentage($i/$maxColCount);
+        }
+    }
+    @for $i from 1 through $maxColCount {
+        .s-col-pull-#{$i} {
+            padding-right: percentage($i/$maxColCount);
+        }
+    }
+}

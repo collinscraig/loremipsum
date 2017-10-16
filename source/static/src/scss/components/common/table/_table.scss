@@ -1,0 +1,76 @@
+// Styles for: Table
+// Authors: Craig Collins
+// Created date: 11/07/2016
+// Notes: Table style for all devices
+
+// TABLE
+table {
+    @include u(margin-bottom, 2);
+    background: #ffffff;
+    table-layout: auto;
+    width: 100%;
+    
+    caption {
+        @include u(font-size, 1.6);
+        background: transparent;
+        color: $bodyText;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    thead {
+        background: $primary;
+        
+        tr th,
+        tr td {
+            @include u(font-size, 1.6);
+            @include u(padding, 1.7, 2);
+            font-family: $bodyFont;
+            color: $white;
+            font-weight: bold;
+            border: solid 1px $bodyFont;
+            vertical-align: top;
+        }
+        
+    }
+    
+    tfoot {
+        background: $grey;
+        
+        tr th,
+        tr td {
+            @include u(font-size, 1.4);
+            @include u(padding, 1.7, 2);
+            color: $white;
+            font-weight: bold;
+            border: solid 1px $primary;
+        }
+        
+    }
+    
+    tr th,
+    tr td {
+        @include u(font-size, 1.4);
+        @include u(padding, 2);
+        text-align: left;
+        line-height: 1.2;
+        border: solid 1px $primary;
+    }
+    
+    thead,
+    tfoot,
+    tbody {
+        
+        tr th,
+        tr td {
+            display: table-cell;
+            line-height: 24px;
+        }
+        
+    }
+    
+    tr td {
+        display: table-cell;
+        line-height: 24px;
+    }
+}

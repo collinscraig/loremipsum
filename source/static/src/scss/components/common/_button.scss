@@ -1,0 +1,138 @@
+// Styles for: Button
+// Authors: Craig Collins
+// Created date: 11/07/2016
+// Notes: Generic button style
+
+// BUTTON
+%cta,
+.cta {
+    @include u(padding, 1.4, 2, 1.5, 2);
+    @include u(margin-bottom, 2);
+    @include u(font-size, 1.8);
+    display: inline-block;
+    line-height: normal;
+    text-align: left;
+    white-space: normal;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: none;
+    border-radius: 0;
+    color: #ffffff;
+    background-color: $primary;
+    font-family: $bodyFont;
+    text-transform: none;
+    transition: all .25s ease-in-out;
+    box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    &:after {
+        @include u(font-size, 2.6);
+        top: 50%;
+        right: 15px;
+        position: absolute;
+        transform: translateY(-50%);
+        opacity: 0.5;
+        transition: all .25s ease-in-out;
+    }
+
+    &:active,
+    &.active,
+    &.open,
+    &:hover {
+        border: none;
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+// BUTTON PRIMARY
+.cta-primary {
+    @extend %cta;
+    color: #ffffff;
+    background-color: $primary;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    &.open {
+        color: #ffffff;
+        background-color: $primary;
+    }
+}
+
+.cta-full-width {
+    width: 100%;
+}
+
+// BUTTON DROPDOWN
+.cta-dropdown {
+    .cta-dropdown-toggle {
+        border-radius: 0 4px 4px 0;
+        position: relative;
+
+        i {
+            display: inline-block;
+        }
+
+        &.open > .cta-dropdown-menu {
+            display: block;
+        }
+    }
+
+    > *:first-child {
+        border-radius: 4px 0 0 4px;
+    }
+
+    .cta-dropdown-menu {
+        @include u(padding, 0);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        min-width: 160px;
+        font-size: 14px;
+        text-align: left;
+        list-style: none;
+        background-color: #ffffff;
+        border: 1px solid #e7e7e7;
+        margin: 1px 0 0;
+
+        li {
+            display: block;
+            width: 100%;
+            margin: 0;
+                  list-style: none;
+
+            a {
+                @include u(padding, 1.2, 1.5);
+                @include u(font-size, 1.5);
+                width: 100%;
+                text-align: left;
+                border: none;
+                display: inline-block;
+                margin: 0;
+
+                &:hover {
+                    color: #333;
+                    background-color: #e6e6e6;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+// BUTTON - 480px
+@media only screen and (max-width: 30em) {
+    %cta {
+        width: 100%;
+    }
+}

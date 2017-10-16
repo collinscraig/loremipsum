@@ -1,0 +1,20 @@
+$use-px: false;
+$compile_main: true;
+$compile_ie: false;
+
+@import 'dependency';
+
+// main specific partials
+@import 'base/structure/structure_responsive';
+
+// common
+@import 'components/common/table/table_responsive';
+@import 'components/common/form/form_responsive';
+
+// blocks
+
+// layout
+@import 'layouts/sections/body/body_responsive';
+@import 'layouts/sections/footer/footer_responsive';
+@import 'layouts/sections/header/header_responsive';
+@import 'layouts/sections/navigation/navigation_responsive';

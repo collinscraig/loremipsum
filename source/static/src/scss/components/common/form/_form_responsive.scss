@@ -1,0 +1,119 @@
+// Styles for: form
+// Authors: Craig Collins
+// Created date: 11/07/2016
+// Notes: form style changes for modern browsers and devices
+
+// form - 940px
+@media only screen and (max-width: 58.750em) {
+    .input-container {
+        .input-group.postcode {
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        input[type="datetime"],
+        input[type="datetime-local"],
+        input[type="month"],
+        input[type="week"],
+        input[type="email"],
+        input[type="number"],
+        input[type="search"],
+        input[type="tel"],
+        input[type="time"],
+        input[type="url"],
+        input[type="color"],
+        input[type="search"] {
+            display: block;
+            width: 100%;
+        }
+
+        .input-group-button {
+            display: block;
+            width: 100%;
+
+            button {
+                @include u(margin, 0, 0, 2, 0);
+                @include u(max-width, 61.5);
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+}
+
+// form - 580px
+@media only screen and (max-width: 36.250em) {
+    .panel {
+        @include u(padding, 2);
+
+        legend {
+            @include u(margin-bottom, 2);
+        }
+    }
+
+    .tooltip {
+        @include u(width, 2);
+        @include u(height, 2);
+        @include u(top, 0);
+        @include u(right, 1);
+
+        &:before {
+            @include u(font-size, 1.4);
+        }
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="week"],
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    input[type="color"],
+    input[type="search"],
+    textarea,
+    select {
+        width: 100%;
+    }
+
+    .input-container {
+        @include u(margin-right, 0);
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .Form__MainBody {
+        @include u(padding, 2);
+    }
+
+    .EPiServerForms .FormResetButton,
+    .EPiServerForms .FormCaptcha .FormCaptcha__Refresh {
+        width: 100% !important;
+    }
+
+    .EPiServerForms .Form__NavigationBar {
+        display: block !important;
+    }
+
+    .EPiServerForms .Form__NavigationBar .Form__NavigationBar__Action,
+    .EPiServerForms .Form__NavigationBar .Form__NavigationBar__ProgressBar {
+        width: 100% !important;
+        display: block !important;
+        margin-bottom: 20px !important;
+        text-align: center !important;
+    }
+
+    .EPiServerForms .Form__NavigationBar .Form__NavigationBar__ProgressBar {
+        height: 46px !important;
+    }
+}

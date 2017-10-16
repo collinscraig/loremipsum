@@ -1,0 +1,463 @@
+// Styles for: Site
+// Authors: Craig Collins
+// Created date: 11/07/2016
+// Notes: Generic site style
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+// HTML5 display-role reset for older browsers
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+    display: block;
+}
+
+html {
+    font: 62.5%/normal $bodyFont;
+    color: $bodyText;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    font-weight: normal;
+    height: 100%;
+}
+
+html,
+body {
+    width: 100%;
+    background-color: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    @include u(font-size, 3.6);
+    @include u(margin, 0, 0, 1, 0);
+    font-family: $bodyFont;
+    line-height: 1.278;
+    color: $grey;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h2 {
+    @include u(font-size, 3.2);
+    @include u(margin, 0, 0, 1, 0);
+    font-family: $bodyFont;
+    line-height: 1.313;
+    color: $grey;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h3 {
+    @include u(font-size, 2.8);
+    @include u(margin, 0, 0, 1, 0);
+    font-family: $bodyFont;
+    line-height: 1.357;
+    color: $grey;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h4 {
+    @include u(font-size, 2.4);
+    @include u(margin, 0, 0, 1, 0);
+    font-family: $bodyFont;
+    line-height: 1.417;
+    color: $grey;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h5 {
+    @include u(font-size, 1.4);
+    @include u(margin, 0, 0, 1, 0);
+    font-family: $bodyFont;
+    color: $grey;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h6 {
+    @include u(font-size, 1.2);
+    @include u(margin, 0, 0, 1, 0);
+    font-family: $bodyFont;
+    color: $grey;
+    font-weight: normal;
+    font-style: normal;
+}
+
+p {
+    @include u(margin, 0, 0, 2, 0);
+    @include u(font-size, 1.6);
+    color: $bodyText;
+    line-height: 1.7142857142857142;
+    vertical-align: top;
+    font-style: normal;
+
+    a {
+        color: inherit;
+        font-size: 1em;
+        border-bottom: 1px solid;
+    }
+
+    a:hover {
+        border-bottom: none;
+    }
+}
+
+ul {
+    @include u(margin, 0, 0, 2, 0);
+    @include u(padding, 0, 0, 0, 1.8);
+
+    li {
+        @include u(font-size, 1.6);
+        @include u(margin, 0.8, 0, 0.8, 0);
+        @include u(padding, 0, 0, 0, 0);
+        line-height: 1.714;
+        list-style-position:outside;
+
+        a {
+            font-size: 1em;
+            border-bottom: 1px solid;
+
+            &:hover {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.inline-list {
+    @include u(margin, 0, 0, 2, 0);
+    @include u(padding, 0, 0, 0, 0);
+
+    li {
+        @include u(padding, 0, 1, 0, 0);
+        display: inline-block;
+        background: none;
+    }
+}
+
+ol {
+    @include u(margin, 0, 0, 2, 0);
+    @include u(padding, 0, 0, 0, 1.8);
+
+    li {
+        @include u(font-size, 1.6);
+        @include u(margin, 0.8, 0, 0.8, 0);
+        @include u(padding, 0, 0, 0, 0);
+        line-height: 1.714;
+        
+        a {
+            font-size: 1em;
+            border-bottom: 1px solid;
+
+            &:hover {
+                border-bottom: none;
+            }
+        }
+    }
+
+    &.list-style-decimal {
+        list-style-type: decimal;
+    }
+
+    &.list-style-alpha {
+        list-style-type: lower-alpha;
+    }
+
+    &.list-style-roman {
+        list-style-type: lower-roman;
+    }
+}
+
+ul,
+ol {
+    width: auto;
+    font-size: inherit;
+}
+
+a:hover {
+    border-bottom: none;
+    text-decoration: none;
+}
+
+a {
+    @include u(font-size, 1.6);
+    font-family: inherit;
+    color: $bodyText;
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+dl {
+    @include u(margin-bottom, 1.2);
+    @include u(margin-top, 0);
+    @include u(font-size, 1.6);
+}
+
+dt,
+dd {
+    line-height: 1.42857143;
+}
+
+dt {
+    font-weight: normal;
+}
+
+dd {
+    @include u(margin-bottom, 1);
+    @include u(margin-left, 0);
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    color: $grey;
+    font-size: 1em;
+    font-family: inherit;
+    border-bottom: 1px solid;
+}
+
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+    border-bottom: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+
+    &.left {
+        @include u(padding, 0.5, 2, 1.2, 0);
+        vertical-align: top;
+        float: left;
+    }
+
+    &.right {
+        @include u(padding, 0.5, 0, 1.2, 2);
+        float: right;
+    }
+}
+
+[hidden] {
+    display: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: none;
+}
+
+b,
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-weight: normal;
+    font-style: italic;
+}
+
+button {
+    @include u(font-size, 1.5);
+    border: none;
+    vertical-align: middle;
+    line-height: 1.2;
+    background-color: transparent;
+    appearance: none;
+}
+
+pre,
+code {
+    @include u(padding, 0.5);
+    @include u(margin, 0);
+    @include u(border-radius, 0.5);
+    font-size: 1em;
+    font-family: 'Courier New', Courier, Monaco, monospace;
+    line-height: 1.2;
+    color: $white;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    background-color: $grey;
+    border: 1px solid $grey;
+    display: inline-block;
+}
+
+hr {
+    @include u(margin, 3, 0);
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+address {
+    @include u(margin, 0, 0, 1.2, 0);
+    @include u(font-size, 1.6);
+    line-height: 1.4;
+}
+
+.off-screen {
+    position: absolute;
+    top: -9999em;
+    left: -9999em;
+}
+
+// Selection styles
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+// Alignment of tags
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+// Hide and show content
+// Hide visually and from screen readers:
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+// Hide only visually, but have it available for screen readers
+.visually-hidden {
+    @include u(padding, 0);
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+
+// Extends the .visuallyhidden class to allow the element
+// to be focusable when navigated to via the keyboard
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+// Angular snippets
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+// Responsive video
+.media_embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 0;
+    height: 0;
+}
+
+.media_embed .map,
+.media_embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+// Mobile optimizations
+* {
+    -webkit-tap-highlight-color: none;
+}
+
+// Blockquote
+blockquote {
+    @include u(padding, 1, 0, 1, 3);
+    @include u(margin, 0, 0, 2, 0);
+    @include u(font-size, 3);
+    font-family: $bodyFont;
+    clear: both;
+    display: block;
+    border-left: 4px solid $primary;
+    line-height: normal;
+    color: $primary;
+
+    p {
+        @include u(font-size, 2);
+        color: $primary;
+    }
+
+    footer {
+        text-align: left;
+    }
+
+    cite {
+        @include u(font-size, 1.6);
+        color: $bodyText;
+
+        &:before {
+            content: '- ';
+        }
+    }
+
+    + p {
+        clear: none;
+    }
+}
+
+// 640px
+@media only screen and (max-width: 40em) {
+    p {
+        > img {
+            @include u(padding, 1, 0);
+            margin: 0 auto;
+            float: none;
+            display: block;
+        }
+    }
+
+}
+
+// 480px
+@media only screen and (max-width: 30em) {
+    blockquote.pull-quote {
+        width: 100%;
+    }
+}

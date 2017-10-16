@@ -38,6 +38,15 @@ dato.parent_pages.each do |parent_page|
   proxy "/#{parent_page.slug}.html", "/parent_page.html", locals: { parent_page: parent_page }
 end
 
+activate :external_pipeline,
+  name: :gulp,
+  command: " cd source && gulp",
+  source: ".static/dist",
+  latency: 1
+
+config[:css_dir] = 'static/dist/css'
+config[:js_dir] = 'static/dist/'
+
 # Proxy pages
 # https://middlemanapp.com/advanced/dynamic-pages/
 

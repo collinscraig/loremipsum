@@ -1,0 +1,35 @@
+// PX and REM constrictor
+@mixin unit-constructor($property, $values...) {
+    $max: length($values);
+    $px-values: '';
+    $rem-values: '';
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $px-values: #{$px-values + $value*$pixelBase}px;
+
+        @if $i < $max {
+            $px-values: #{$px-values + " "};
+        }
+    }
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $rem-values: #{$rem-values + $value}rem;
+
+        @if $i < $max {
+            $rem-values: #{$rem-values + " "};
+        }
+    }
+    @if $use-px == true {
+        #{$property}: $px-values;
+    } @else if $use-px == false {
+        #{$property}: $rem-values;
+    } @else {
+        #{$property}: $px-values;
+        #{$property}: $rem-values;
+    }
+}
+
+@mixin u($property, $values...) {
+    @include unit-constructor($property, $values...);
+}
+

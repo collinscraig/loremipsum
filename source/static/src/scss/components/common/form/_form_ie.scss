@@ -1,0 +1,9 @@
+// Styles for: form
+// Authors: Craig Collins
+// Created date: 11/07/2016
+// Notes: form style changes to support IE8/IE9
+
+// hide dropdown arrow in internet explorer
+select::-ms-expand {
+    display: none;
+}

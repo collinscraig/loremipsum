@@ -1,0 +1,20 @@
+$use-px: true;
+$compile_main: false;
+$compile_ie: true;
+
+@import 'dependency';
+
+// IE specific partials
+@import 'base/structure/structure_ie';
+
+// common
+@import 'components/common/table/table_ie';
+@import 'components/common/form/form_ie';
+
+// blocks
+
+// layout
+@import 'layouts/sections/body/body_ie';
+@import 'layouts/sections/footer/footer_ie';
+@import 'layouts/sections/header/header_ie';
+@import 'layouts/sections/navigation/navigation_ie';
