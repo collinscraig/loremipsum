@@ -1,22 +1,22 @@
 // Release 2.0.0
 
 // global settings
-var scss_src = './Static/src/scss/**/',
-    scss_dist = './Static/dist/css/',
+var scss_src = './static/src/scss/**/',
+    scss_dist = './static/dist/css/',
     scss_prefix = 'last 5 versions';
 
-var js_src = './Static/src/js/',
-    js_dist = './Static/dist/js/';
+var js_src = './static/src/js/',
+    js_dist = './static/dist/js/';
 
-var img_src = './Static/src/images/**/*',
-    img_dist = './Static/dist/images/';
+var img_src = './static/src/images/**/*',
+    img_dist = './static/dist/images/';
 
 var font_name = 'icon-font',
     font_class_name = 'icon',
-    font_src = '/Static/src/fonts/',
-    font_dist = '/Static/dist/fonts/',
-    icon_src = './Static/src/icons/',
-    icon_sprite_dist = './Static/dist/icons/',
+    font_src = '/static/src/fonts/',
+    font_dist = '/static/dist/fonts/',
+    icon_src = './static/src/icons/',
+    icon_sprite_dist = './static/dist/icons/',
     icon_sprite_sheet = '../html/*.html';
 
 // dependencies
@@ -57,7 +57,7 @@ var bundler = browserify({
 // clean
 // @requires gulp-sass
 gulp.task('clean', function(cb) {
-	return del('./Static/dist/', cb);
+	return del('./static/dist/', cb);
 });
 
 // output CSS files which are expanded
@@ -97,7 +97,7 @@ gulp.task('icon_font', function () {
                     className: font_class_name
                 }))
                 .pipe(rename('_icons.scss'))
-                .pipe(gulp.dest('./Static/src/scss/base/'));
+                .pipe(gulp.dest('./static/src/scss/base/'));
         })
         .pipe(gulp.dest("." + font_dist));
 });

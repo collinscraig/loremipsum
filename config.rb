@@ -45,7 +45,7 @@ activate :external_pipeline,
   latency: 1
 
 config[:css_dir] = 'static/dist/css'
-config[:js_dir] = 'static/dist/'
+config[:js_dir] = 'static/dist/js'
 
 # Proxy pages
 # https://middlemanapp.com/advanced/dynamic-pages/

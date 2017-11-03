@@ -1,287 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/app.js":[function(require,module,exports){
-'use strict';
-
-var $ = require('jquery');
-
-var modules = [
-    {
-        name: 'accessible-nav',
-        module: require('./modules/accessible-nav')
-    },
-    {
-        name: 'help-tip',
-        module: require('./modules/help-tip')
-    },
-    {
-        name: 'expand-content',
-        module: require('./modules/expand-content')
-    },
-    {
-        name: 'scroll-to-target',
-        module: require('./modules/scroll-to-target')
-    },
-    {
-        name: 'scroll-to-top',
-        module: require('./modules/scroll-to-top')
-    }
-];
-
-(function initModules() {
-
-    for (var i = 0; i < modules.length; i++) {
-        var Module = modules[i].module;
-
-        var moduleName = $('[data-behavior*="' + modules[i].name + '"]');
-
-        if (moduleName.length > 0) {
-            var context = $('[data-behavior*="' + modules[i].name + '"]');
-            var module = new Module({
-                context: context
-            });
-            module.init();
-        }
-    }
-}());
-
-},{"./modules/accessible-nav":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/accessible-nav.js","./modules/expand-content":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/expand-content.js","./modules/help-tip":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/help-tip.js","./modules/scroll-to-target":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/scroll-to-target.js","./modules/scroll-to-top":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/scroll-to-top.js","jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/accessible-nav.js":[function(require,module,exports){
-'use strict';
-
-var $ = require('jquery');
-
-/**
- * Adds focus listeners to ensure a user can tab through the navigation
- * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
- * @return { Object - revealing module pattern object containing the returned functions/objects }
- */
-module.exports = function(options) {
-    var context = options.context;
-
-    /**
-     * Attach all the event listeners
-     */
-    function bindEventListeners() {
-        // top level links
-        var mainNavLinks = context.find('.main-navigation__link');
-        // sub nav links
-        var subNavLinks = context.find('.sub-nav__link');
-
-        // listen for focus on the main nav link
-        mainNavLinks.on('focus', function() {
-            // clear hover class from all top level nav items to make sure only current item is highlighted
-            mainNavLinks.removeClass('hover');
-        });
-
-        // listen for focus on sub nav link
-        subNavLinks.on('focus', function() {
-            // find the top nav link for this sub nav link and give it a hover class
-            $(this).parents('.sub-nav').siblings('.main-navigation__link').addClass('hover');
-        });
-
-    }
-
-    /**
-     * init function called by app.js
-     */
-    function init() {
-        bindEventListeners();
-    }
-
-    return {
-        init: init
-    };
-};
-
-},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/expand-content.js":[function(require,module,exports){
-'use strict';
-
-var $ = require('jquery');
-
-/**
- * Reveals a block of content on trigger click by switching a class on the module context
- * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
- * @return { Object - revealing module pattern object containing the returned functions/objects }
- */
-module.exports = function(options) {
-    var context = $(options.context);
-
-    var expandedClass = 'is-open';
-    var collapsedClass = 'is-closed';
-
-    /**
-     * init function called by app.js
-     */
-    function init() {
-
-        $.each(context, function() {
-
-            var $this = $(this);
-            var triggerBtn = $this.find('[data-binding="expand-content-trigger"]');
-
-            var toggleClasses = function($module) {
-                if ($module.hasClass(collapsedClass)) {
-                    $module.removeClass(collapsedClass).addClass(expandedClass);
-                } else {
-                    $module.removeClass(expandedClass).addClass(collapsedClass);
-                }
-            };
-
-            /**
-             * Attach all the event listeners
-             */
-            function bindEventListeners($module) {
-
-                triggerBtn.on('click', $module, function(e) {
-                    e.preventDefault();
-                    toggleClasses($module);
-                });
-            }
-
-            bindEventListeners($this);
-        });
-    }
-
-    return {
-        init: init
-    };
-};
-
-},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/help-tip.js":[function(require,module,exports){
-'use strict';
-
-var $ = require('jquery');
-
-/**
- * Reveals help tip content when trigger is pressed.
- * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
- * @return { Object - revealing module pattern object containing the returned functions/objects }
- */
-module.exports = function(options) {
-    var context = $(options.context);
-
-    /**
-     * init function called by app.js
-     */
-    function init() {
-
-        $.each(context, function() {
-
-            var $this = $(this);
-
-            var triggerBtn = $this.find('[data-binding="help-tip-trigger"]');
-
-            var doWrapper = function($module) {
-                $module.hasClass('is-open') ? $module.removeClass('is-open') : $module.addClass('is-open');
-            };
-
-            /**
-             * Attach all the event listeners
-             */
-            function bindEventListeners($module) {
-
-                triggerBtn.on('click', $module, function(e) {
-                    e.preventDefault();
-                    doWrapper($module);
-                });
-            }
-
-            bindEventListeners($this);
-        });
-    }
-
-    return {
-        init: init
-    };
-};
-
-},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/scroll-to-target.js":[function(require,module,exports){
-'use strict';
-
-var $ = require('jquery');
-
-/**
- * scrolls to a block of content on trigger click
- * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
- * @return { Object - revealing module pattern object containing the returned functions/objects }
- */
-module.exports = function(options) {
-    // get the context for the current instance of the module
-    var context = options.context;
-
-    // scroll to target section
-    function scrollToTarget(e) {
-        var targetId = e.currentTarget.hash.substring(1),
-            targetElement = document.getElementById(targetId)
-
-        if (targetElement) {
-          $('html, body').stop().animate({ scrollTop: $(targetElement).offset().top - 10}, 800);
-        }
-    }
-
-    /**
-     * Attach all the event listeners
-     */
-    function bindEventListeners() {
-        
-      context.on('click', function(e) {
-        e.preventDefault();
-        scrollToTarget(e);
-      });
-    }
-
-    /**
-     * init function called by app.js
-     */
-    function init() {
-        bindEventListeners();
-    }
-
-    return {
-        init: init
-    };
-};
-
-},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/modules/scroll-to-top.js":[function(require,module,exports){
-'use strict';
-
-var $ = require('jquery');
-
-/**
- * scrolls to the top of the page on trigger click
- * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
- * @return { Object - revealing module pattern object containing the returned functions/objects }
- */
-module.exports = function (options) {
-    // get the context for the current instance of the module
-    var context = options.context;
-
-    // scroll to top
-    function scrollToTop() {
-        $('html, body').animate({ scrollTop: 0 }, 800);
-    }
-
-    /**
-     * Attach all the event listeners
-     */
-    function bindEventListeners() {
-        context.on('click', function (e) {
-            e.preventDefault();
-            scrollToTop(e);
-        });
-    }
-
-    /**
-     * init function called by app.js
-     */
-    function init() {
-        bindEventListeners();
-    }
-
-    return {
-        init: init
-    };
-};
-
-},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.11.3
  * http://jquery.com/
@@ -10634,4 +10351,287 @@ return jQuery;
 
 }));
 
-},{}]},{},["/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/Static/src/js/app.js"]);
+},{}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/app.js":[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+
+var modules = [
+    {
+        name: 'accessible-nav',
+        module: require('./modules/accessible-nav')
+    },
+    {
+        name: 'help-tip',
+        module: require('./modules/help-tip')
+    },
+    {
+        name: 'expand-content',
+        module: require('./modules/expand-content')
+    },
+    {
+        name: 'scroll-to-target',
+        module: require('./modules/scroll-to-target')
+    },
+    {
+        name: 'scroll-to-top',
+        module: require('./modules/scroll-to-top')
+    }
+];
+
+(function initModules() {
+
+    for (var i = 0; i < modules.length; i++) {
+        var Module = modules[i].module;
+
+        var moduleName = $('[data-behavior*="' + modules[i].name + '"]');
+
+        if (moduleName.length > 0) {
+            var context = $('[data-behavior*="' + modules[i].name + '"]');
+            var module = new Module({
+                context: context
+            });
+            module.init();
+        }
+    }
+}());
+
+},{"./modules/accessible-nav":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/accessible-nav.js","./modules/expand-content":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/expand-content.js","./modules/help-tip":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/help-tip.js","./modules/scroll-to-target":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/scroll-to-target.js","./modules/scroll-to-top":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/scroll-to-top.js","jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/accessible-nav.js":[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+
+/**
+ * Adds focus listeners to ensure a user can tab through the navigation
+ * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
+ * @return { Object - revealing module pattern object containing the returned functions/objects }
+ */
+module.exports = function(options) {
+    var context = options.context;
+
+    /**
+     * Attach all the event listeners
+     */
+    function bindEventListeners() {
+        // top level links
+        var mainNavLinks = context.find('.main-navigation__link');
+        // sub nav links
+        var subNavLinks = context.find('.sub-nav__link');
+
+        // listen for focus on the main nav link
+        mainNavLinks.on('focus', function() {
+            // clear hover class from all top level nav items to make sure only current item is highlighted
+            mainNavLinks.removeClass('hover');
+        });
+
+        // listen for focus on sub nav link
+        subNavLinks.on('focus', function() {
+            // find the top nav link for this sub nav link and give it a hover class
+            $(this).parents('.sub-nav').siblings('.main-navigation__link').addClass('hover');
+        });
+
+    }
+
+    /**
+     * init function called by app.js
+     */
+    function init() {
+        bindEventListeners();
+    }
+
+    return {
+        init: init
+    };
+};
+
+},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/expand-content.js":[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+
+/**
+ * Reveals a block of content on trigger click by switching a class on the module context
+ * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
+ * @return { Object - revealing module pattern object containing the returned functions/objects }
+ */
+module.exports = function(options) {
+    var context = $(options.context);
+
+    var expandedClass = 'is-open';
+    var collapsedClass = 'is-closed';
+
+    /**
+     * init function called by app.js
+     */
+    function init() {
+
+        $.each(context, function() {
+
+            var $this = $(this);
+            var triggerBtn = $this.find('[data-binding="expand-content-trigger"]');
+
+            var toggleClasses = function($module) {
+                if ($module.hasClass(collapsedClass)) {
+                    $module.removeClass(collapsedClass).addClass(expandedClass);
+                } else {
+                    $module.removeClass(expandedClass).addClass(collapsedClass);
+                }
+            };
+
+            /**
+             * Attach all the event listeners
+             */
+            function bindEventListeners($module) {
+
+                triggerBtn.on('click', $module, function(e) {
+                    e.preventDefault();
+                    toggleClasses($module);
+                });
+            }
+
+            bindEventListeners($this);
+        });
+    }
+
+    return {
+        init: init
+    };
+};
+
+},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/help-tip.js":[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+
+/**
+ * Reveals help tip content when trigger is pressed.
+ * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
+ * @return { Object - revealing module pattern object containing the returned functions/objects }
+ */
+module.exports = function(options) {
+    var context = $(options.context);
+
+    /**
+     * init function called by app.js
+     */
+    function init() {
+
+        $.each(context, function() {
+
+            var $this = $(this);
+
+            var triggerBtn = $this.find('[data-binding="help-tip-trigger"]');
+
+            var doWrapper = function($module) {
+                $module.hasClass('is-open') ? $module.removeClass('is-open') : $module.addClass('is-open');
+            };
+
+            /**
+             * Attach all the event listeners
+             */
+            function bindEventListeners($module) {
+
+                triggerBtn.on('click', $module, function(e) {
+                    e.preventDefault();
+                    doWrapper($module);
+                });
+            }
+
+            bindEventListeners($this);
+        });
+    }
+
+    return {
+        init: init
+    };
+};
+
+},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/scroll-to-target.js":[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+
+/**
+ * scrolls to a block of content on trigger click
+ * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
+ * @return { Object - revealing module pattern object containing the returned functions/objects }
+ */
+module.exports = function(options) {
+    // get the context for the current instance of the module
+    var context = options.context;
+
+    // scroll to target section
+    function scrollToTarget(e) {
+        var targetId = e.currentTarget.hash.substring(1),
+            targetElement = document.getElementById(targetId)
+
+        if (targetElement) {
+          $('html, body').stop().animate({ scrollTop: $(targetElement).offset().top - 10}, 800);
+        }
+    }
+
+    /**
+     * Attach all the event listeners
+     */
+    function bindEventListeners() {
+        
+      context.on('click', function(e) {
+        e.preventDefault();
+        scrollToTarget(e);
+      });
+    }
+
+    /**
+     * init function called by app.js
+     */
+    function init() {
+        bindEventListeners();
+    }
+
+    return {
+        init: init
+    };
+};
+
+},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}],"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/modules/scroll-to-top.js":[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery');
+
+/**
+ * scrolls to the top of the page on trigger click
+ * @param  { Object - options - contains an object of config for the module, normally this is just the context in which the module has been called }
+ * @return { Object - revealing module pattern object containing the returned functions/objects }
+ */
+module.exports = function (options) {
+    // get the context for the current instance of the module
+    var context = options.context;
+
+    // scroll to top
+    function scrollToTop() {
+        $('html, body').animate({ scrollTop: 0 }, 800);
+    }
+
+    /**
+     * Attach all the event listeners
+     */
+    function bindEventListeners() {
+        context.on('click', function (e) {
+            e.preventDefault();
+            scrollToTop(e);
+        });
+    }
+
+    /**
+     * init function called by app.js
+     */
+    function init() {
+        bindEventListeners();
+    }
+
+    return {
+        init: init
+    };
+};
+
+},{"jquery":"/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/node_modules/jquery/dist/jquery.js"}]},{},["/Users/craigcollins/Documents/Sites/Lorem Ipsum/source/static/src/js/app.js"]);
